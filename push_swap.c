@@ -6,49 +6,58 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/03 12:06:34 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/04 22:07:11 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h> 
 
-//stdio.h - temp for printf test
-
-void	display(int arr[])
+void	display(void)
 {
-	int	i;
+	int	tmp_a;
+	int	tmp_b;
 
-	i = -1;
-	while (arr[++i])
-		printf("%d\n", arr[i]);
+	tmp_a = g_topa;
+	tmp_b = g_topb;
+	printf("===STACK A===\n");
+	while (tmp_a >= 0)
+		printf("%d\n", g_stacka[tmp_a--]);
+	printf("===STACK B===\n");
+	while (tmp_b >= 0)
+		printf("%d\n", g_stackb[tmp_b--]);
 }
 
-void	ft_putstr(char *s)
+void	ft_init(char **argv, int size)
 {
-	int	i;
+	int	j;
+	int	tmp;
 
-	i = -1;
-	while (s[++i])
-		write(1, &s[i], 1);
+	j = 1;
+	g_topa = -1;
+	g_topb = -1;
+	tmp = size;
+	while (--tmp >= 0)
+	{
+		g_stacka[tmp] = ft_atoi(argv[j++]);
+		g_topa++;
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	int		stack_a[argc];
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 1;
-	if (argc < 1)
+	g_stacka = malloc(sizeof(int) * argc);
+	g_stackb = malloc(sizeof(int) * argc);
+	g_size = argc - 1;
+	if (argc <= 1 || !ft_checknum(argv, argc) || !g_stacka || !g_stackb)
 	{
 		ft_putstr("Error!\n");
 		return (1);
 	}
-	while (argv[j])
-		stack_a[i++] = ft_atoi(argv[j++]);
-	stack_a[i] = '\0';
-	display(stack_a);
+	ft_init(argv, g_size);
+	push_b();
+	display();
+	free(g_stacka);
+	free(g_stackb);
 	return (0);
 }
