@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 10:20:46 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/05 15:45:47 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/05 16:30:43 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,14 @@ int	ft_isallgood(void)
 		top--;
 	}
 	return (1);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 == *s2 && *s1 && *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return ((unsigned char)s1 - (unsigned char)s2);
 }

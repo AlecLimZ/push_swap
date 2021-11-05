@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/05 15:08:56 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/05 17:24:44 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int		ft_isallgood(void);
 void	rotate_algo(void);
 void	swap_algo(void);
 void	push_algo(void);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_itoa(int n);
 void	display(void);
 
 #endif
