@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 10:20:46 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/05 15:27:08 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:45:47 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	ft_creverse(int i)
 	}
 }
 
-int		ft_isallgood(void)
+int	ft_isallgood(void)
 {
-	int top;
+	int	top;
 
 	if (g_topa != (g_size - 1))
 		return (0);

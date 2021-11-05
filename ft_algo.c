@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:01:40 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/05 15:40:13 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:45:21 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	rotate_algo(void)
 
 void	swap_algo(void)
 {
-	if (g_stacka[g_topa] > g_stacka[g_topa - 1] && g_stackb[g_topb] < g_stackb[g_topb - 1])
+	if (g_stacka[g_topa] > g_stacka[g_topa - 1]
+		&& g_stackb[g_topb] < g_stackb[g_topb - 1])
 		ft_cswap(2);
 	if (g_stacka[g_topa] > g_stacka[g_topa - 1])
 		ft_cswap(0);
@@ -41,6 +42,6 @@ void	push_algo(void)
 		g_flag = 0;
 	if (g_flag == 1)
 		push_b();
-	if  (g_flag == 0 && g_topb != -1)
+	if (g_flag == 0 && g_topb != -1)
 		push_a();
 }
