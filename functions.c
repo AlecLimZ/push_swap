@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:31:24 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/05 18:12:05 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/05 19:03:23 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	ft_checknum(char *s[], int size)
 		if (ft_strcmp(s[i], ft_itoa(ft_atoi(s[i]))) != 0)
 			return (0);
 	}
-
 	while (--i > 1)
 	{
 		j = i;

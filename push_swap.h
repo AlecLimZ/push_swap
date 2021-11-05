@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/05 17:24:44 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/05 18:50:48 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <string.h>
 
 int	*g_stacka;
 int	*g_stackb;
