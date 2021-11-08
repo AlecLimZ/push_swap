@@ -4,7 +4,7 @@ CC		= gcc -Wall -Wextra -Werror
 OBJ		= $(SRC:%.c=%.o)
 
 all:		$(NAME)
-			$(CC) $^ -o pushswap
+			$(CC) $^ -o push_swap
 
 $(OBJ):		$(SRC)
 			$(CC) -I. -c $^
