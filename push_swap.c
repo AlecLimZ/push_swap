@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/06 21:12:48 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/09 15:00:44 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,34 @@ void	ft_swapush(void)
 		if (ft_isbothgood())
 		{
 			ft_pushalla();
-			break;
+			break ;
 		}
 	}
 //	display();
+}
+
+void	ft_insert(void)
+{
+	int	pos1;
+	int	pos2;
+
+	int c = 1;
+	while (c)
+	{
+		if (ft_isallgood())
+			break ;
+	//	swap_algo();
+		pos1 = 0;
+		pos2 = 0;
+		twosmall(&pos1, &pos2);
+		insert_algo(pos1, pos2);
+		if (ft_isbothgood())
+			break ;
+		if (g_topa == -1)
+			break ;
+	}
+//	swap_algo();
+	ft_pushalla();
 }
 
 int	main(int argc, char **argv)
@@ -85,7 +109,10 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_init(argv, argc);
-	ft_swapush();
+	if (argc <= 6)
+		ft_swapush();
+	else
+		ft_insert();
 //	display();
 	free(g_stacka);
 	free(g_stackb);

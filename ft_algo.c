@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:01:40 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/06 21:14:43 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:56:14 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	reverse_algo(void)
 
 void	press_algo(void)
 {
-	while (g_stacka[g_topa] < g_stacka[g_topa - 1] && g_stacka[g_topa - 1] > g_stacka[g_topa - 2])
+	while (g_stacka[g_topa] < g_stacka[g_topa - 1]
+		&& g_stacka[g_topa - 1] > g_stacka[g_topa - 2])
 	{
-//		reverse_algo();
 		push_b();
 		rotate_algo();
 		swap_algo();

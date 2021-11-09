@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/06 20:50:54 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/09 12:16:43 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
+# include <limits.h>
 
 int	*g_stacka;
 int	*g_stackb;
@@ -47,5 +48,7 @@ int		ft_isbothgood(void);
 void	ft_pushalla(void);
 void	press_algo(void);
 void	reverse_algo(void);
+void	twosmall(int *pos1, int *pos2);
+void	insert_algo(int pos1, int pos2);
 
 #endif
