@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/09 15:00:44 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:15:58 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,11 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_init(argv, argc);
-	if (argc <= 6)
-		ft_swapush();
-	else
-		ft_insert();
+//	if (argc <= 6)
+//		ft_swapush();
+//	else
+//		ft_insert();
+	ft_quick();
 //	display();
 	free(g_stacka);
 	free(g_stackb);

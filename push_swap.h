@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/09 12:16:43 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:16:14 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	press_algo(void);
 void	reverse_algo(void);
 void	twosmall(int *pos1, int *pos2);
 void	insert_algo(int pos1, int pos2);
+void	ft_quick(void);
 
 #endif
