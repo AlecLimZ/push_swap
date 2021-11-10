@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/09 18:16:14 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/10 14:33:36 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,11 @@ void	reverse_algo(void);
 void	twosmall(int *pos1, int *pos2);
 void	insert_algo(int pos1, int pos2);
 void	ft_quick(void);
+int		*ft_sorthold(int *hold);
+int		stepcount(int pos);
+int		ft_strintlen(int *s);
+void	pushpos(int pos);
+void	smallest(int *s, int *pos);
+int		nextsmall(int s, int *pos);
 
 #endif

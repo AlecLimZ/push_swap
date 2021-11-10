@@ -6,65 +6,128 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:05:56 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/09 18:49:23 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:44:36 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	smallest(void)
+char	quick_algo(int pos1, int pos2, int *holdp)
 {
-	int	i;
-	int m;
+	int		step1;
+	int		step2;
+	int		i;
+	char	winner;
 
 	i = 0;
-	m = INT_MAX;
-	while (i <= g_topa)
+	printf("QUICK!!\n");
+	step1 = stepcount(pos1);
+	step2 = stepcount(pos2);
+	winner = '\0';
+	if (step1 <= step2)
 	{
-		if (m > g_stacka[i])
-			m = g_stacka[i];
-		i++;
+		pushpos(pos1);
+		if (pos1 > g_topa / 2)
+			while (i <= g_topa / 2 + 1)
+				holdp[i++] += step1;
+		else
+			while (i <= g_topa / 2 + 1)
+				holdp[i++] -= step1;
+		winner = '1';
 	}
-	return (m);
+	else if (step1 > step2)
+	{
+		pushpos(pos2);
+		if (pos2 > g_topa / 2)
+			while (i <= g_topa / 2 + 1)
+				holdp[i++] += step2;
+		else
+			while (i <= g_topa / 2 + 1)
+				holdp[i++] -= step2;
+		winner = '2';
+	}
+	printf("step1: %d\n", step1);
+	printf("step2: %d\n", step2);
+	i = 0;
+	while (i <= g_topa / 2 + 1)
+		printf("new holdp[i]: %d\n", holdp[i++]);
+	return (winner);
 }
 
-int	nextsmall(int s)
+void	magicpush(int *holdp)
 {
-	int	i;
-	int m;
+//	int	step1;
+//	int	step2;
+	int		top;
+	int		mid;
+	int		i;
+	int 	b;
+	char	pivotp;
 
 	i = 0;
-	m = INT_MAX;
-	while (i <= g_topa)
+	b = 0;
+	top = g_topa / 2;
+	mid = top / 2;
+	printf("top: %d\n", top);
+//	printf("top/2: %d\n", top / 2);
+	while (i <= top + 1)
 	{
-		if (m > g_stacka[i] && g_stacka[i] > s)
-			m = g_stacka[i];
-		i++;
+		printf ("i: %d\n", i);
+		if (i == mid)
+			pushpos(holdp[i++]);
+		else
+			pivotp = quick_algo(holdp[i], holdp[top], holdp);
+		if (pivotp == '1')
+			i++;
+		else
+			top--;
 	}
-	return (m);
+	ft_cswap(1);
 }
-void	ft_quick(void)
+
+void	ft_inithold(int *holdp)
 {
 	int	i;
 	int	j;
-	int	hold[100];
-	int p = g_stacka[g_topa];
+	int	p;
 	int	s;
+	int	pos;
 
 	i = 0;
 	j = 0;
-	s = smallest();
-	hold[i++] = s;
+	smallest(&s, &pos);
+	holdp[i++] = pos;
 	while (j < g_topa / 2)
 	{
-		p = nextsmall(s);
-		printf("p: %d\n", p);
+		p = nextsmall(s, &pos);
 		s = p;
-		hold[i++] = p;
+		holdp[i++] = pos;
 		j++;
 	}
-	hold[i] = '\0';
-	i = 0;
-	while (i < g_topa / 2 + 1)
-		printf("hold: %d\n", hold[i++]);
+	holdp[i] = '\0';
+}
+
+void	ft_quick(void)
+{
+	int	*holdp;
+//	int	i;
+
+//	i = 0;
+	holdp = malloc(sizeof(int) * g_size);
+	if (holdp)
+	{
+		//while (g_topa > 1)
+		//{
+		//	if (ft_isallgood())
+		//		break ;
+			ft_inithold(holdp);
+			holdp = ft_sorthold(holdp);
+//			while (i < g_topa / 2 + 1)
+//				printf("ori holdp: %d\n", holdp[i++]);
+			magicpush(holdp);
+		//	if (ft_isbothgood())
+		//		break ;
+		//}
+	}
+//	ft_pushalla();
 }

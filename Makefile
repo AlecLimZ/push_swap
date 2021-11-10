@@ -1,5 +1,5 @@
 NAME	= pushswap.a
-SRC		= push_swap.c functions.c ft_swapush1.c ft_swapush2.c ft_algo.c functions2.c ft_insert.c ft_quick.c
+SRC		= push_swap.c functions.c ft_swapush1.c ft_swapush2.c ft_algo.c functions2.c ft_insert.c ft_quick.c ft_extra.c
 CC		= gcc -Wall -Wextra -Werror
 OBJ		= $(SRC:%.c=%.o)
 

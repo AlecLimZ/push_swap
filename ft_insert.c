@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:42:20 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/09 15:13:21 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/10 14:54:50 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,4 @@ void	insert_algo(int pos1, int pos2)
 			pos1 -= step2;
 		pushpos(pos1);
 	}
-	swap_algo();
 }
