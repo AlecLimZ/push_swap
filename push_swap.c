@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/10 15:08:37 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/11 14:44:23 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ int	main(int argc, char **argv)
 //	{
 //		ft_insert();
 	ft_quick();
-//	}
-	display();
+//	}	
+//	display();
 	free(g_stacka);
 	free(g_stackb);
 	return (0);

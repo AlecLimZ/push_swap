@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/10 14:33:36 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/11 14:13:43 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,8 @@ int		ft_strintlen(int *s);
 void	pushpos(int pos);
 void	smallest(int *s, int *pos);
 int		nextsmall(int s, int *pos);
+void	ft_insertforquick(void);
+int		stepcount_b(int pos);
+void	ft_quicktoa(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:38:13 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/10 14:33:22 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/11 14:01:14 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,16 @@ int	*ft_sorthold(int *hold)
 		}
 	}
 	return (hold);
+}
+
+int	stepcount_b(int pos)
+{
+	int	i;
+
+	i = 0;
+	if (pos < (g_topb / 2 + 1))
+		i = pos + 1;
+	else if (pos >= (g_topb / 2))
+		i = g_topb - pos;
+	return (i);
 }
