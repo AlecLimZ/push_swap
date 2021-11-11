@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/11 14:13:43 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:43:53 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	press_algo(void);
 void	reverse_algo(void);
 void	twosmall(int *pos1, int *pos2);
 void	insert_algo(int pos1, int pos2);
-void	ft_quick(void);
+void	ft_quick(int chunk, int argc);
 int		*ft_sorthold(int *hold);
 int		stepcount(int pos);
 int		ft_strintlen(int *s);
@@ -60,5 +60,7 @@ int		nextsmall(int s, int *pos);
 void	ft_insertforquick(void);
 int		stepcount_b(int pos);
 void	ft_quicktoa(void);
+void	winnerone(int pos1, int *holdp, int max, int step1);
+void	winnertwo(int pos2, int *holdp, int max, int step2);
 
 #endif

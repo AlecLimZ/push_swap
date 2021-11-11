@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/11 14:44:23 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:20:18 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void	display(void)
 
 	tmp_a = g_topa;
 	tmp_b = g_topb;
-	printf("===STACK A===\n");
 	while (tmp_a >= 0)
 		printf("%d\n", g_stacka[tmp_a--]);
-	printf("===STACK B===\n");
 	while (tmp_b >= 0)
 		printf("%d\n", g_stackb[tmp_b--]);
 	printf("\n");
@@ -49,19 +47,10 @@ void	ft_init(char **argv, int argc)
 
 void	ft_swapush(void)
 {
-//	while (!ft_isallgood())
-//	{
-//		rotate_algo();
-//		swap_algo();
-//		if (ft_isallgood())
-//			break ;
-//		push_algo();
-//	}
 	while (1)
 	{
 		rotate_algo();
 		swap_algo();
-//		reverse_algo();
 		if (ft_isallgood())
 			break ;
 		press_algo();
@@ -72,7 +61,6 @@ void	ft_swapush(void)
 			break ;
 		}
 	}
-//	display();
 }
 
 void	ft_insert(void)
@@ -80,12 +68,10 @@ void	ft_insert(void)
 	int	pos1;
 	int	pos2;
 
-	int c = 1;
-	while (c)
+	while (1)
 	{
 		if (ft_isallgood())
 			break ;
-	//	swap_algo();
 		pos1 = 0;
 		pos2 = 0;
 		twosmall(&pos1, &pos2);
@@ -96,12 +82,13 @@ void	ft_insert(void)
 		if (g_topa == -1)
 			break ;
 	}
-//	swap_algo();
 	ft_pushalla();
 }
 
 int	main(int argc, char **argv)
 {
+	int	chunk;
+
 	g_stacka = malloc(sizeof(int) * argc);
 	g_stackb = malloc(sizeof(int) * argc);
 	if (argc < 1 || !ft_checknum(argv, argc) || !g_stacka || !g_stackb)
@@ -110,14 +97,13 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_init(argv, argc);
-//	if (argc <= 6)
-//		ft_swapush();
-//	else
-//	{
-//		ft_insert();
-	ft_quick();
-//	}	
-//	display();
+	if (argc <= 10)
+		ft_swapush();
+	else
+	{
+		chunk = g_topa / 10;
+		ft_quick(chunk, argc);
+	}
 	free(g_stacka);
 	free(g_stackb);
 	return (0);
