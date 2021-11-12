@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/11 17:20:18 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/12 13:12:32 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	display(void)
 
 	tmp_a = g_topa;
 	tmp_b = g_topb;
+	printf("===Stack A===\n");
 	while (tmp_a >= 0)
 		printf("%d\n", g_stacka[tmp_a--]);
+	printf("===Stack B===\n");
 	while (tmp_b >= 0)
 		printf("%d\n", g_stackb[tmp_b--]);
 	printf("\n");

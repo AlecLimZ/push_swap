@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:05:56 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/11 17:48:05 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/12 13:12:09 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ char	quick_algo(int pos1, int pos2, int *holdp, int max)
 {
 	int		step1;
 	int		step2;
-	int		i;
 	char	winner;
 
-	i = 0;
 	step1 = stepcount(pos1);
 	step2 = stepcount(pos2);
 	winner = '\0';
@@ -42,12 +40,10 @@ void	magicpush(int *holdp, int chunk)
 {
 	int		top;
 	int		i;
-	int		b;
 	char	pivotp;
 	int		max;
 
 	i = 0;
-	b = 0;
 	top = chunk;
 	max = top;
 	while (i <= top)
@@ -74,7 +70,7 @@ void	ft_inithold(int *holdp, int chunk, int argc)
 	smallest(&s, &pos);
 	holdp[i++] = pos;
 	if (argc > 10 && argc <= 101)
-		chunk = (g_topa / 2) - 1;
+		chunk = (g_topa * 0.3);
 	while (j < chunk)
 	{
 		p = nextsmall(s, &pos);
@@ -100,9 +96,7 @@ void	ft_quicktoa(void)
 void	ft_quick(int chunk, int argc)
 {
 	int	*holdp;
-	int	i;
 
-	i = 0;
 	holdp = malloc(sizeof(int) * g_size);
 	if (holdp)
 	{
@@ -116,7 +110,6 @@ void	ft_quick(int chunk, int argc)
 			if (ft_isbothgood())
 				break ;
 		}
-		swap_algo();
 		ft_insertforquick();
 	}
 	free(holdp);
