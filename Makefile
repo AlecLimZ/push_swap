@@ -14,7 +14,7 @@ $(NAME):	$(OBJ)
 			ranlib $@
 
 clean:
-			rm -rf $(OBJ) pushswap
+			rm -rf $(OBJ) push_swap
 
 fclean:		clean
 			rm -rf $(NAME)

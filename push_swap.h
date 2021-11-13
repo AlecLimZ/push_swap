@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/12 13:25:39 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:26:55 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		stepcount(int pos);
 void	pushpos(int pos);
 
 // inside ft_quick.c
-void	ft_quick(int chunk, int argc);
+void	ft_quick(int chunk);
 void	ft_quicktoa(void);
 
 // inside ft_insertforquick.c

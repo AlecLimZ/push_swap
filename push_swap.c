@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/12 13:12:32 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:52:58 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,15 @@ int	main(int argc, char **argv)
 	ft_init(argv, argc);
 	if (argc <= 10)
 		ft_swapush();
+	else if (argc > 10 && argc <= 101)
+	{
+		chunk = (g_topa * 0.2);
+		ft_quick(chunk);
+	}
 	else
 	{
 		chunk = g_topa / 10;
-		ft_quick(chunk, argc);
+		ft_quick(chunk);
 	}
 	free(g_stacka);
 	free(g_stackb);

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:05:56 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/12 13:12:09 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:28:03 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	magicpush(int *holdp, int chunk)
 	ft_cswap(1);
 }
 
-void	ft_inithold(int *holdp, int chunk, int argc)
+void	ft_inithold(int *holdp, int chunk)
 {
 	int	i;
 	int	j;
@@ -69,8 +69,6 @@ void	ft_inithold(int *holdp, int chunk, int argc)
 	j = 0;
 	smallest(&s, &pos);
 	holdp[i++] = pos;
-	if (argc > 10 && argc <= 101)
-		chunk = (g_topa * 0.3);
 	while (j < chunk)
 	{
 		p = nextsmall(s, &pos);
@@ -93,7 +91,7 @@ void	ft_quicktoa(void)
 	}
 }
 
-void	ft_quick(int chunk, int argc)
+void	ft_quick(int chunk)
 {
 	int	*holdp;
 
@@ -104,7 +102,7 @@ void	ft_quick(int chunk, int argc)
 		{
 			if (ft_isallgood())
 				break ;
-			ft_inithold(holdp, chunk, argc);
+			ft_inithold(holdp, chunk);
 			holdp = ft_sorthold(holdp);
 			magicpush(holdp, chunk);
 			if (ft_isbothgood())
