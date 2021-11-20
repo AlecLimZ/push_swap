@@ -6,91 +6,100 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:23:52 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/06 23:19:27 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 17:20:02 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_numlen(int n)
+static int	ft_numlen(int n)
 {
-	int	i;
+	int				len;
+	unsigned int	i;
 
-	i = 0;
 	if (n == 0)
 		return (1);
+	len = 0;
+	i = n;
 	if (n < 0)
 	{
-		i++;
-		n *= -1;
+		len++;
+		i = -i;
 	}
-	while (n > 0)
+	while (i > 0)
 	{
-		i++;
-		n /= 10;
+		len++;
+		i /= 10;
 	}
-	return (i);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	int		i;
 	int		len;
 	char	*str;
 	long	nb;
+	int		i;
 
 	len = ft_numlen(n);
-	str = malloc(sizeof(char) * len);
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	i = len;
+	str[len] = '\0';
 	nb = n;
 	if (n < 0)
 	{
 		str[0] = '-';
-		nb *= -1;
+		nb = -nb;
+		i = 1;
 	}
-	if (nb == 0)
-		str[0] = '0';
-	while (nb > 0 && str[i] != '-')
+	else
+		i = 0;
+	while (--len >= i)
 	{
-		str[--i] = '0' + (nb % 10);
+		str[len] = (nb % 10) + '0';
 		nb /= 10;
 	}
-	str[len] = '\0';
 	return (str);
 }
 
-int	ft_isbothgood(void)
+int	ft_isbothgood(t_stack *stack)
 {
 	int	a;
 	int	b;
 
-	a = g_topa;
-	b = g_topb;
+	a = stack->topa;
+	b = stack->topb;
 	while (a > 0)
 	{
-		if (g_stacka[a] > g_stacka[a - 1])
+		if (stack->a[a] > stack->a[a - 1])
 			return (0);
 		a--;
 	}
 	while (b > 0)
 	{
-		if (g_stackb[b] < g_stackb[b - 1])
+		if (stack->b[b] < stack->b[b - 1])
 			return (0);
 		b--;
 	}
 	return (1);
 }
 
-void	ft_pushalla(void)
+void	ft_pushalla(t_stack *stack)
 {
 	int	b;
 
-	b = g_topb;
+	b = stack->topb;
 	while (b >= 0)
 	{
-		push_a();
+		push_a(stack);
 		b--;
 	}
+}
+
+void	ft_malloc(t_stack **stack, int argc)
+{
+	*stack = malloc(sizeof(t_stack));
+	(**stack).a = malloc(sizeof(int) * argc);
+	(**stack).b = malloc(sizeof(int) * argc);
 }

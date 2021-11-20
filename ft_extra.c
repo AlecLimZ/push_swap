@@ -6,40 +6,40 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:38:13 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/12 11:53:59 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 16:23:00 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	smallest(int *s, int *pos)
+void	smallest(int *s, int *pos, t_stack *stack)
 {
 	int	i;
 
 	i = -1;
 	*s = INT_MAX;
-	while (++i <= g_topa)
+	while (++i <= stack->topa)
 	{
-		if (*s > g_stacka[i])
+		if (*s > stack->a[i])
 		{
-			*s = g_stacka[i];
+			*s = stack->a[i];
 			*pos = i;
 		}
 	}
 }
 
-int	nextsmall(int s, int *pos)
+int	nextsmall(int s, int *pos, t_stack *stack)
 {
 	int	i;
 	int	m;
 
 	i = 0;
 	m = INT_MAX;
-	while (i <= g_topa)
+	while (i <= stack->topa)
 	{
-		if (m > g_stacka[i] && g_stacka[i] > s)
+		if (m > stack->a[i] && stack->a[i] > s)
 		{
-			m = g_stacka[i];
+			m = stack->a[i];
 			*pos = i;
 		}
 		i++;
@@ -47,7 +47,7 @@ int	nextsmall(int s, int *pos)
 	return (m);
 }
 
-int	*ft_sorthold(int *hold)
+int	*ft_sorthold(int *hold, t_stack *stack)
 {
 	int	*sort;
 	int	tmp;
@@ -55,13 +55,13 @@ int	*ft_sorthold(int *hold)
 	int	j;
 
 	i = 0;
-	sort = malloc(sizeof(int) * (g_topa / 2));
+	sort = malloc(sizeof(int) * (stack->topa / 2));
 	if (sort)
 	{
-		while (i < g_topa / 2 + 1)
+		while (i < stack->topa / 2 + 1)
 		{
 			j = i;
-			while (++j < g_topa / 2 + 1)
+			while (++j < stack->topa / 2 + 1)
 			{
 				if (hold[i] < hold[j])
 				{
@@ -76,14 +76,21 @@ int	*ft_sorthold(int *hold)
 	return (hold);
 }
 
-int	stepcount_b(int pos)
+int	stepcount_b(int pos, t_stack *stack)
 {
 	int	i;
 
 	i = 0;
-	if (pos < (g_topb / 2 + 1))
+	if (pos < (stack->topb / 2 + 1))
 		i = pos + 1;
-	else if (pos >= (g_topb / 2))
-		i = g_topb - pos;
+	else if (pos >= (stack->topb / 2))
+		i = stack->topb - pos;
 	return (i);
+}
+
+void	ft_free(t_stack *stack)
+{
+	free(stack->a);
+	free(stack->b);
+	free(stack);
 }

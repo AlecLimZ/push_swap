@@ -6,112 +6,113 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/13 18:52:58 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 16:20:52 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h> 
 
-void	display(void)
+void	display(t_stack *stack)
 {
 	int	tmp_a;
 	int	tmp_b;
 
-	tmp_a = g_topa;
-	tmp_b = g_topb;
+	tmp_a = stack->topa;
+	tmp_b = stack->topb;
 	printf("===Stack A===\n");
 	while (tmp_a >= 0)
-		printf("%d\n", g_stacka[tmp_a--]);
+		printf("%d\n", stack->a[tmp_a--]);
 	printf("===Stack B===\n");
 	while (tmp_b >= 0)
-		printf("%d\n", g_stackb[tmp_b--]);
+		printf("%d\n", stack->b[tmp_b--]);
 	printf("\n");
 }
 
-void	ft_init(char **argv, int argc)
+static void	ft_init(char **argv, int argc, t_stack *stack)
 {
 	int	j;
 	int	tmp;
 
 	j = 1;
-	g_topa = -1;
-	g_topb = -1;
-	g_size = argc - 1;
-	g_flag = 1;
-	tmp = g_size;
+	stack->topa = -1;
+	stack->topb = -1;
+	stack->size = argc - 1;
+	stack->flag = 1;
+	stack->max = 0;
+	tmp = stack->size;
 	while (--tmp >= 0)
 	{
-		g_stacka[tmp] = ft_atoi(argv[j++]);
-		g_topa++;
+		stack->a[tmp] = ft_atoi(argv[j++]);
+		stack->topa++;
 	}
 }
 
-void	ft_swapush(void)
+static void	ft_swapush(t_stack *stack)
 {
 	while (1)
 	{
-		rotate_algo();
-		swap_algo();
-		if (ft_isallgood())
+		rotate_algo(stack);
+		swap_algo(stack);
+		if (ft_isallgood(stack))
 			break ;
-		press_algo();
-		push_algo();
-		if (ft_isbothgood())
+		press_algo(stack);
+		push_algo(stack);
+		if (ft_isbothgood(stack))
 		{
-			ft_pushalla();
+			ft_pushalla(stack);
 			break ;
 		}
 	}
 }
 
-void	ft_insert(void)
-{
-	int	pos1;
-	int	pos2;
-
-	while (1)
-	{
-		if (ft_isallgood())
-			break ;
-		pos1 = 0;
-		pos2 = 0;
-		twosmall(&pos1, &pos2);
-		insert_algo(pos1, pos2);
-		swap_algo();
-		if (ft_isbothgood())
-			break ;
-		if (g_topa == -1)
-			break ;
-	}
-	ft_pushalla();
-}
+//static void	ft_insert(t_stack *stack)
+//{
+//	int	pos1;
+//	int	pos2;
+//
+//	while (1)
+//	{
+//		if (ft_isallgood(stack))
+//			break ;
+//		pos1 = 0;
+//		pos2 = 0;
+//		twosmall(&pos1, &pos2, stack);
+//		insert_algo(pos1, pos2, stack);
+//		swap_algo(stack);
+//		if (ft_isbothgood(stack))
+//			break ;
+//		if (stack->topa == -1)
+//			break ;
+//	}
+//	ft_pushalla(stack);
+//}
 
 int	main(int argc, char **argv)
 {
-	int	chunk;
+	int		chunk;
+	t_stack	*stack;
 
-	g_stacka = malloc(sizeof(int) * argc);
-	g_stackb = malloc(sizeof(int) * argc);
-	if (argc < 1 || !ft_checknum(argv, argc) || !g_stacka || !g_stackb)
+	ft_malloc(&stack, argc);
+	if (argc < 1 || !ft_checknum(argv, argc) || !stack
+		|| !stack->a || !stack->b)
 	{
 		ft_putstr("Error\n");
 		return (1);
 	}
-	ft_init(argv, argc);
+	ft_init(argv, argc, stack);
 	if (argc <= 10)
-		ft_swapush();
+		ft_swapush(stack);
 	else if (argc > 10 && argc <= 101)
 	{
-		chunk = (g_topa * 0.2);
-		ft_quick(chunk);
+		chunk = (stack->topa * 0.2);
+		ft_quick(chunk, stack);
 	}
 	else
 	{
-		chunk = g_topa / 10;
-		ft_quick(chunk);
+		chunk = stack->topa / 10;
+		ft_quick(chunk, stack);
 	}
-	free(g_stacka);
-	free(g_stackb);
+	ft_free(stack);
 	return (0);
 }

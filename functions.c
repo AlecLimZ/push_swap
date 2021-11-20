@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:31:24 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/20 10:21:00 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 17:19:15 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putstr(char *s)
 		write(1, &s[i], 1);
 }
 
-int	ft_isspace(char c)
+static int	ft_isspace(char c)
 {
 	if (c == '\t' || c == '\n' || c == '\v'
 		|| c == '\r' || c == '\f' || c == ' ')
@@ -29,7 +29,7 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-int	ft_isnum(char c)
+static int	ft_isnum(char c)
 {
 	if ((c >= '0' && c <= '9') || c == '-')
 		return (1);
@@ -68,7 +68,7 @@ int	ft_atoi(char *s)
 {
 	int			i;
 	int			sign;
-	long int	num;
+	long		num;
 
 	i = 0;
 	sign = 1;

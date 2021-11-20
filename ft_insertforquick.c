@@ -6,124 +6,124 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 11:14:47 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/12 11:56:54 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 16:13:17 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	secondbig(int s1, int s2, int **pos2)
+static void	secondbig(int s1, int s2, int **pos2, t_stack *stack)
 {
 	int	j;
 
 	j = -1;
-	while (++j <= g_topb)
+	while (++j <= stack->topb)
 	{
-		if (s2 < g_stackb[j] && g_stackb[j] != s1)
+		if (s2 < stack->b[j] && stack->b[j] != s1)
 		{
-			s2 = g_stackb[j];
+			s2 = stack->b[j];
 			**pos2 = j;
 		}
 	}
 }
 
-void	twobig(int *pos1, int *pos2)
+static void	twobig(int *pos1, int *pos2, t_stack *stack)
 {
 	int	i;
 	int	s1;
 	int	s2;
 
 	i = -1;
-	s1 = g_stackb[0];
-	s2 = g_stackb[0];
-	while (++i <= g_topb)
+	s1 = stack->b[0];
+	s2 = stack->b[0];
+	while (++i <= stack->topb)
 	{
-		if (s1 < g_stackb[i])
+		if (s1 < stack->b[i])
 		{
 			s2 = s1;
 			*pos2 = *pos1;
-			s1 = g_stackb[i];
+			s1 = stack->b[i];
 			*pos1 = i;
 		}
 		if (s2 == s1)
 		{
-			s2 = g_stackb[1];
+			s2 = stack->b[1];
 			*pos2 = 1;
 		}
-		secondbig(s1, s2, &pos2);
+		secondbig(s1, s2, &pos2, stack);
 	}
 }
 
-void	pushposbig(int pos)
+static void	pushposbig(int pos, t_stack *stack)
 {
-	if (g_topb == 1)
-		swap_algo();
-	if (pos < (g_topb / 2 + 1))
+	if (stack->topb == 1)
+		swap_algo(stack);
+	if (pos < (stack->topb / 2 + 1))
 	{
 		while (pos-- >= 0)
-			ft_creverse(1);
+			ft_creverse(1, stack);
 	}
-	else if (pos > (g_topb / 2))
+	else if (pos > (stack->topb / 2))
 	{
-		while (pos < g_topb)
+		while (pos < stack->topb)
 		{
-			ft_crotate(1);
+			ft_crotate(1, stack);
 			pos++;
 		}
 	}
-	else if (pos < g_topb)
-		ft_creverse(1);
-	push_a();
+	else if (pos < stack->topb)
+		ft_creverse(1, stack);
+	push_a(stack);
 }
 
-void	big_algo(int pos1, int pos2)
+static void	big_algo(int pos1, int pos2, t_stack *stack)
 {
 	int	step1;
 	int	step2;
 
-	step1 = stepcount_b(pos1);
-	step2 = stepcount_b(pos2);
+	step1 = stepcount_b(pos1, stack);
+	step2 = stepcount_b(pos2, stack);
 	if (step1 <= step2)
 	{
-		pushposbig(pos1);
-		if (pos1 > g_topb / 2)
+		pushposbig(pos1, stack);
+		if (pos1 > stack->topb / 2)
 			pos2 += step1;
 		else
 			pos2 -= step1;
-		pushposbig(pos2);
+		pushposbig(pos2, stack);
 	}
 	else if (step1 > step2)
 	{
-		pushposbig(pos2);
-		if (pos2 > g_topb / 2)
+		pushposbig(pos2, stack);
+		if (pos2 > stack->topb / 2)
 			pos1 += step2;
 		else
 			pos1 -= step2;
-		pushposbig(pos1);
+		pushposbig(pos1, stack);
 	}
 }
 
-void	ft_insertforquick(void)
+void	ft_insertforquick(t_stack *stack)
 {
 	int	pos1;
 	int	pos2;
 	int	c;
 
 	c = 1;
-	swap_algo();
+	swap_algo(stack);
 	while (c)
 	{
-		if (ft_isallgood())
+		if (ft_isallgood(stack))
 			break ;
 		pos1 = 0;
 		pos2 = 0;
-		twobig(&pos1, &pos2);
-		big_algo(pos1, pos2);
-		swap_algo();
-		if (ft_isbothgood())
+		twobig(&pos1, &pos2, stack);
+		big_algo(pos1, pos2, stack);
+		swap_algo(stack);
+		if (ft_isbothgood(stack))
 			break ;
-		if (g_topb == -1)
+		if (stack->topb == -1)
 			break ;
 	}
-	ft_quicktoa();
+	ft_quicktoa(stack);
 }

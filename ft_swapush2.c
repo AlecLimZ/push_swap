@@ -6,33 +6,33 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 10:20:46 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/05 19:07:17 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 15:27:37 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_cswap(int i)
+void	ft_cswap(int i, t_stack *stack)
 {
-	if (i == 0 && g_topa >= 1)
+	if (i == 0 && stack->topa >= 1)
 	{
-		ft_swap('a');
+		ft_swap('a', stack);
 		ft_putstr("sa\n");
 	}
-	else if (i == 1 && g_topb >= 1)
+	else if (i == 1 && stack->topb >= 1)
 	{
-		ft_swap('b');
+		ft_swap('b', stack);
 		ft_putstr("sb\n");
 	}
-	else if (i == 2 && g_topa >= 1 && g_topb >= 1)
+	else if (i == 2 && stack->topa >= 1 && stack->topb >= 1)
 	{
-		ft_swap('a');
-		ft_swap('b');
+		ft_swap('a', stack);
+		ft_swap('b', stack);
 		ft_putstr("ss\n");
 	}
 }
 
-void	ft_reverse(char c)
+void	ft_reverse(char c, t_stack *stack)
 {
 	int	tmp;
 	int	n;
@@ -40,50 +40,50 @@ void	ft_reverse(char c)
 	n = 0;
 	if (c == 'a')
 	{
-		tmp = g_stacka[n--];
-		while (++n < g_topa)
-			g_stacka[n] = g_stacka[n + 1];
-		g_stacka[n] = tmp;
+		tmp = stack->a[n--];
+		while (++n < stack->topa)
+			stack->a[n] = stack->a[n + 1];
+		stack->a[n] = tmp;
 	}
 	else if (c == 'b')
 	{
-		tmp = g_stackb[n--];
-		while (++n < g_topb)
-			g_stackb[n] = g_stackb[n + 1];
-		g_stackb[n] = tmp;
+		tmp = stack->b[n--];
+		while (++n < stack->topb)
+			stack->b[n] = stack->b[n + 1];
+		stack->b[n] = tmp;
 	}
 }
 
-void	ft_creverse(int i)
+void	ft_creverse(int i, t_stack *stack)
 {
-	if (i == 0 && g_topa >= 2)
+	if (i == 0 && stack->topa >= 2)
 	{
-		ft_reverse('a');
+		ft_reverse('a', stack);
 		ft_putstr("rra\n");
 	}
-	else if (i == 1 && g_topb >= 2)
+	else if (i == 1 && stack->topb >= 2)
 	{
-		ft_reverse('b');
+		ft_reverse('b', stack);
 		ft_putstr("rrb\n");
 	}
-	else if (i == 2 && g_topa >= 2 && g_topb >= 2)
+	else if (i == 2 && stack->topa >= 2 && stack->topb >= 2)
 	{
-		ft_reverse('a');
-		ft_reverse('b');
+		ft_reverse('a', stack);
+		ft_reverse('b', stack);
 		ft_putstr("rrr\n");
 	}
 }
 
-int	ft_isallgood(void)
+int	ft_isallgood(t_stack *stack)
 {
 	int	top;
 
-	if (g_topa != (g_size - 1))
+	if (stack->topa != (stack->size - 1))
 		return (0);
-	top = g_topa;
+	top = stack->topa;
 	while (top > 0)
 	{
-		if (g_stacka[top] > g_stacka[top - 1])
+		if (stack->a[top] > stack->a[top - 1])
 			return (0);
 		top--;
 	}
