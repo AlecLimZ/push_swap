@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:31:24 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/06 13:30:17 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 10:21:00 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int	ft_isnum(char c)
 
 int	ft_checknum(char *s[], int size)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*str;
 
 	i = 0;
 	while (++i < size)
@@ -48,8 +49,10 @@ int	ft_checknum(char *s[], int size)
 		while (s[i][++j] != '\0')
 			if (!ft_isnum(s[i][j]) || s[i][j + 1] == '-')
 				return (0);
-		if (ft_strcmp(s[i], ft_itoa(ft_atoi(s[i]))) != 0)
-			return (0);
+		str = ft_itoa(ft_atoi(s[i]));
+		if (ft_strcmp(s[i], str) != 0)
+			return (free(str), 0);
+		free(str);
 	}
 	while (--i > 1)
 	{
