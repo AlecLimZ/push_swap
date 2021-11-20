@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:01:40 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/20 16:05:04 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 19:10:00 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	rotate_algo(t_stack *stack)
 {
 	if (stack->topa >= 2)
 	{
-		if (stack->a[0] < stack->a[stack->topa]
+		while (stack->a[0] < stack->a[stack->topa]
 			&& stack->b[0] > stack->b[stack->topb])
 			ft_crotate(2, stack);
-		else if (stack->a[0] < stack->a[stack->topa])
+		while (stack->a[0] < stack->a[stack->topa])
 			ft_crotate(0, stack);
-		else if (stack->b[0] > stack->b[stack->topb])
+		while (stack->b[0] > stack->b[stack->topb])
 			ft_crotate(1, stack);
 	}
 }
@@ -51,23 +51,28 @@ void	reverse_algo(t_stack *stack)
 {
 	if (stack->topa >= 2)
 	{
-		if (stack->a[stack->topa] > stack->a[0]
-			&& stack->b[stack->topb] < stack->b[0])
+		while (stack->a[stack->topa] > stack->a[0] && stack->a[1] > stack->a[0]
+			&& stack->b[stack->topb] < stack->b[0] && stack->b[1] < stack->b[0])
 			ft_creverse(2, stack);
-		else if (stack->a[stack->topa] > stack->a[0])
+		while (stack->a[stack->topa] < stack->a[0]
+			&& stack->a[1] > stack->a[0] && stack->b[stack->topb] > stack->b[0]
+			&& stack->b[1] < stack->b[0])
+			ft_creverse(2, stack);
+		while (stack->a[stack->topa] > stack->a[0] && stack->a[1] > stack->a[0])
 			ft_creverse(0, stack);
-		else if (stack->b[stack->topb] < stack->b[0])
+		while (stack->b[stack->topb] < stack->b[0] && stack->b[1] < stack->b[0])
+			ft_creverse(1, stack);
+		while (stack->a[stack->topa] < stack->a[0]
+			&& stack->a[1] > stack->a[0])
+			ft_creverse(0, stack);
+		while (stack->b[stack->topb] > stack->b[0]
+			&& stack->b[1] < stack->b[0])
 			ft_creverse(1, stack);
 	}
 }
 
 void	press_algo(t_stack *stack)
 {
-	while (stack->a[stack->topa] < stack->a[stack->topa - 1]
-		&& stack->a[stack->topa - 1] > stack->a[stack->topa - 2])
-	{
-		push_b(stack);
-		rotate_algo(stack);
-		swap_algo(stack);
-	}
+	if (stack->a[stack->topa] > stack->b[stack->topb])
+		push_a(stack);
 }

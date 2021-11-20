@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/20 16:42:08 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 21:47:32 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_stack
 
 // inside push_swap.c
 void	display(t_stack *stack);
+void	ft_swapush(t_stack *stack);
 
 // inside functions.c
 int		ft_atoi(char *s);
@@ -89,6 +90,7 @@ void	ft_free(t_stack *stack);
 // inside ft_extra2.c
 void	winnerone(int pos1, int *holdp, int step1, t_stack *stack);
 void	winnertwo(int pos2, int *holdp, int step2, t_stack *stack);
+void	fix_algo(t_stack *stack);
 //int		ft_strintlen(int *s);
 
 #endif

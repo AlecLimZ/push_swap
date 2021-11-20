@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/20 16:20:52 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/20 22:08:23 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,19 @@ static void	ft_init(char **argv, int argc, t_stack *stack)
 	}
 }
 
-static void	ft_swapush(t_stack *stack)
+void	ft_swapush(t_stack *stack)
 {
 	while (1)
 	{
-		rotate_algo(stack);
+		fix_algo(stack);
 		swap_algo(stack);
+		reverse_algo(stack);
+		rotate_algo(stack);
 		if (ft_isallgood(stack))
 			break ;
-		press_algo(stack);
+		swap_algo(stack);
 		push_algo(stack);
-		if (ft_isbothgood(stack))
+		if (ft_isbothgood(stack) || (ft_isallgood(stack) && stack->topb == -1))
 		{
 			ft_pushalla(stack);
 			break ;
@@ -75,6 +77,7 @@ static void	ft_swapush(t_stack *stack)
 //	{
 //		if (ft_isallgood(stack))
 //			break ;
+//		ft_swapush(stack);
 //		pos1 = 0;
 //		pos2 = 0;
 //		twosmall(&pos1, &pos2, stack);
