@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:33:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/20 22:08:23 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/21 09:33:08 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static void	ft_init(char **argv, int argc, t_stack *stack)
 	stack->flag = 1;
 	stack->max = 0;
 	tmp = stack->size;
+	stack->a[tmp] = '\0';
+	ft_bzero(stack);
 	while (--tmp >= 0)
 	{
 		stack->a[tmp] = ft_atoi(argv[j++]);
@@ -93,13 +95,13 @@ void	ft_swapush(t_stack *stack)
 
 int	main(int argc, char **argv)
 {
-	int		chunk;
 	t_stack	*stack;
 
 	ft_malloc(&stack, argc);
 	if (argc < 1 || !ft_checknum(argv, argc) || !stack
 		|| !stack->a || !stack->b)
 	{
+		ft_free(stack);
 		ft_putstr("Error\n");
 		return (1);
 	}
@@ -107,15 +109,9 @@ int	main(int argc, char **argv)
 	if (argc <= 10)
 		ft_swapush(stack);
 	else if (argc > 10 && argc <= 101)
-	{
-		chunk = (stack->topa * 0.2);
-		ft_quick(chunk, stack);
-	}
+		ft_quick(stack->topa * 0.2, stack);
 	else
-	{
-		chunk = stack->topa / 10;
-		ft_quick(chunk, stack);
-	}
+		ft_quick(stack->topa / 10, stack);
 	ft_free(stack);
 	return (0);
 }

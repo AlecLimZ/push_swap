@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 17:34:33 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/20 22:10:43 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/21 09:30:36 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,16 @@ void	fix_algo(t_stack *stack)
 	}
 	if (stack->topa > 0)
 		ft_crotate(0, stack);
+}
+
+void	ft_bzero(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (i <= stack->size)
+	{
+		stack->b[i] = '\0';
+		i++;
+	}
 }

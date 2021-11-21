@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:38:13 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/20 16:23:00 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/21 09:13:13 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,24 @@ int	nextsmall(int s, int *pos, t_stack *stack)
 
 int	*ft_sorthold(int *hold, t_stack *stack)
 {
-	int	*sort;
 	int	tmp;
 	int	i;
 	int	j;
 
 	i = 0;
-	sort = malloc(sizeof(int) * (stack->topa / 2));
-	if (sort)
+	while (i < stack->topa / 2 + 1)
 	{
-		while (i < stack->topa / 2 + 1)
+		j = i;
+		while (++j < stack->topa / 2 + 1)
 		{
-			j = i;
-			while (++j < stack->topa / 2 + 1)
+			if (hold[i] < hold[j])
 			{
-				if (hold[i] < hold[j])
-				{
-					tmp = hold[i];
-					hold[i] = hold[j];
-					hold[j] = tmp;
-				}
+				tmp = hold[i];
+				hold[i] = hold[j];
+				hold[j] = tmp;
 			}
-			i++;
 		}
+		i++;
 	}
 	return (hold);
 }

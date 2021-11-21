@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:23:52 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/11/20 17:20:02 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/11/21 08:30:59 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,11 @@ void	ft_malloc(t_stack **stack, int argc)
 	*stack = malloc(sizeof(t_stack));
 	(**stack).a = malloc(sizeof(int) * argc);
 	(**stack).b = malloc(sizeof(int) * argc);
+	if ((**stack).a == NULL || (**stack).b == NULL)
+	{
+		free((**stack).a);
+		free((**stack).b);
+		free(stack);
+		exit(1);
+	}
 }
